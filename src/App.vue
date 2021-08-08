@@ -1,6 +1,6 @@
 <template>
   <Stars />
-  <main class="container mx-auto">
+  <main class="relative container mx-auto">
     <Welcome />
     <About />
   </main>
