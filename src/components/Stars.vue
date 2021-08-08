@@ -1,6 +1,6 @@
 <template>
-  <div class="star-wrapper">
-    <div class="star-container">
+  <div class="fixed top-0 right-0 bottom-0 left-0 pointer-events-none overflow-hidden">
+    <div class="transform rotate-45">
       <div v-for="(star, index) in stars" :key="index" class="star" :style="star.containerStyle">
         <div class="star__content" :style="star.style" />
       </div>
@@ -49,45 +49,30 @@ for (let i = 0; i < 200; i++) {
 }
 </script>
 
-<style scoped>
-.star-wrapper {
-  position: fixed;
-  width: 100%;
-  height: var(--welcome-height);
-  background: radial-gradient(circle at bottom left, #06002b 10%, #04002b 25%, #00062d 30%, #000427 50%, #000 100%);
-  pointer-events: none;
-  overflow: hidden;
-}
-.star-container {
-  transform: rotate(45deg);
-}
-
+<style lang="postcss" scoped>
 .star {
-  position: absolute;
+  @apply absolute;
   transform: translateY(-10vh);
   animation-iteration-count: infinite;
   animation-timing-function: linear;
 }
 .star__content {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  mix-blend-mode: screen;
-  background-image: radial-gradient(hsl(180, 100%, 80%), hsl(180, 100%, 80%) 10%, hsla(180, 100%, 80%, 0) 56%);
+  @apply w-full h-full rounded-full mix-blend-screen;
+  background-image: radial-gradient(#99ffff, #99ffff 10%, black 56%);
   animation: fadein-frames 200ms infinite, scale-frames 2s infinite;
 }
 
 @keyframes fade-frames {
   0% {
-    opacity: 1;
+    @apply opacity-100;
   }
 
   50% {
-    opacity: 0.7;
+    @apply opacity-70;
   }
 
   100% {
-    opacity: 1;
+    @apply opacity-100;
   }
 }
 @keyframes scale-frames {

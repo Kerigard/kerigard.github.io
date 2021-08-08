@@ -1,48 +1,34 @@
 <template>
-  <Welcome />
-  <main></main>
+  <Stars />
+  <main class="container mx-auto">
+    <Welcome />
+    <About />
+  </main>
 </template>
 
 <script setup>
+import Stars from '@/components/Stars.vue'
 import Welcome from './views/Welcome.vue'
+import About from './views/About.vue'
 </script>
 
-<style>
+<style lang="postcss">
 @import url(https://fonts.googleapis.com/css?family=Montserrat:400);
 
-:root {
-  --welcome-height: 90vh;
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-body,
-h1 {
-  margin: 0;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 body {
-  color: white;
-  overflow-y: scroll;
-}
-main {
-  position: absolute;
-  width: 100%;
-  margin-top: var(--welcome-height);
-  background: #111827;
-  box-shadow: 0px -6px 6px 10px #111827;
-}
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-.red--text {
-  color: red;
+  @apply bg-black bg-fixed text-white;
+  background-image: radial-gradient(
+    circle at bottom left,
+    #06002b 10%,
+    #04002b 25%,
+    #00062d 30%,
+    #000427 50%,
+    #000 100%
+  );
 }
 
 ::-webkit-scrollbar {
@@ -50,46 +36,34 @@ a {
   height: 15px;
 }
 ::-webkit-scrollbar-track {
-  background: white;
+  @apply bg-black;
 }
 ::-webkit-scrollbar-thumb {
-  background: #5e6165;
-  background-clip: content-box;
+  @apply bg-gray-600 bg-clip-content;
   border: 3px solid transparent;
   border-radius: 9px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #363638;
-  background-clip: content-box;
+  @apply bg-gray-500 bg-clip-content;
 }
 ::-webkit-scrollbar-track:vertical {
-  box-shadow: inset 2px 0 1px -1px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 2px 0 1px -1px rgba(255, 255, 255, 0.1);
 }
 ::-webkit-scrollbar-track:horizontal {
-  box-shadow: inset 0 2px 1px -1px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0 2px 1px -1px rgba(255, 255, 255, 0.1);
 }
 
 .ripple__container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  pointer-events: none;
+  @apply absolute top-0 right-0 bottom-0 left-0 overflow-hidden pointer-events-none;
   border-radius: inherit;
 }
 .ripple {
-  position: absolute;
-  background: currentColor;
-  border-radius: 50%;
-  opacity: 0.4;
-  transform: translate(-50%, -50%) scale(0);
-  transition-property: transform, opacity, background;
-  transition-duration: 500ms;
+  @apply absolute bg-current rounded-full opacity-40;
+  @apply transform -translate-x-1/2 -translate-y-1/2 scale-0;
+  @apply transition duration-500;
 }
 .ripple--active {
-  opacity: 0.25;
-  transform: translate(-50%, -50%) scale(1);
+  @apply opacity-25;
+  @apply transform -translate-x-1/2 -translate-y-1/2 scale-100;
 }
 </style>

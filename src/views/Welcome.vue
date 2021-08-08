@@ -1,38 +1,8 @@
 <template>
-  <Stars />
-
-  <div class="welcome">
-    <h1>Привет,</h1>
-    <h1>Я <span class="red--text">Владислав</span>,</h1>
-    <h1><span class="red--text">Full Stack</span> разработчик</h1>
-    <h2>JavaScript / Vue / Laravel</h2>
+  <div class="flex flex-col justify-center h-screen uppercase px-8 sm:px-0">
+    <h1 class="text-4xl md:text-5xl lg:text-7xl">Привет,</h1>
+    <h1 class="text-4xl md:text-5xl lg:text-7xl">Я <span class="text-red-600">Владислав</span>,</h1>
+    <h1 class="text-4xl md:text-5xl lg:text-7xl"><span class="text-red-600">Full Stack</span> разработчик</h1>
+    <h2 class="text-lg md:text-xl lg:text-2xl text-gray-400">JavaScript / Vue / Laravel</h2>
   </div>
 </template>
-
-<script setup>
-import Stars from '../components/Stars.vue'
-</script>
-
-<style scoped>
-.welcome {
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: var(--welcome-height);
-  padding: 40px;
-  font-family: 'Montserrat';
-  color: white;
-  text-transform: uppercase;
-  line-height: 1;
-}
-
-h1 {
-  font-size: 72px;
-  font-weight: 400;
-}
-h2 {
-  color: rgb(255 255 255 / 60%);
-  font-weight: 400;
-}
-</style>
