@@ -8,6 +8,9 @@ module.exports = {
       fontFamily: {
         sans: ['Montserrat', ...defaultTheme.fontFamily.sans],
       },
+      minWidth: {
+        48: '12rem' /* 192px */,
+      },
     },
   },
 

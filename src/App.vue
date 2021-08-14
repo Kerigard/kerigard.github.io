@@ -3,6 +3,7 @@
   <main class="relative container mx-auto">
     <Welcome />
     <About />
+    <WorkExperience />
   </main>
 </template>
 
@@ -10,6 +11,7 @@
 import Stars from '@/components/Stars.vue'
 import Welcome from './views/Welcome.vue'
 import About from './views/About.vue'
+import WorkExperience from './views/WorkExperience.vue'
 </script>
 
 <style lang="postcss">
