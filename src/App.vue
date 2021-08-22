@@ -4,6 +4,7 @@
     <Welcome />
     <About />
     <WorkExperience />
+    <Contacts />
   </main>
 </template>
 
@@ -12,6 +13,7 @@ import Stars from '@/components/Stars.vue'
 import Welcome from './views/Welcome.vue'
 import About from './views/About.vue'
 import WorkExperience from './views/WorkExperience.vue'
+import Contacts from './views/Contacts.vue'
 </script>
 
 <style lang="postcss">

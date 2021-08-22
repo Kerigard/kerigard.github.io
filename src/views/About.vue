@@ -1,9 +1,6 @@
 <template>
   <Card>
-    <h3 class="flex justify-between items-center text-2xl lg:text-4xl mb-2 md:mb-8">
-      Обо мне
-      <Icon v-model="githubIcon" href="https://github.com/Kerigard" />
-    </h3>
+    <h3 class="text-2xl lg:text-4xl mb-2 md:mb-8">Обо мне</h3>
 
     <p>Я занимаюсь разработкой CRM систем для обработки голосовых и неголосовых обращений.</p>
 
@@ -34,7 +31,6 @@
 </template>
 
 <script setup>
-import githubIcon from '@iconify-icons/simple-icons/github'
 import laravelIcon from '@iconify-icons/simple-icons/laravel'
 import vuedotjsIcon from '@iconify-icons/simple-icons/vuedotjs'
 import postgresqlIcon from '@iconify-icons/simple-icons/postgresql'
