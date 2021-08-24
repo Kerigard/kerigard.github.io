@@ -1,3 +1,4 @@
+name: Build Project
 on: [push]
 jobs:
   build:
@@ -9,5 +10,5 @@ jobs:
         username: Kerigard
         reponame: kerigard.github.io
         token: ${{ secrets.GITHUB_TOKEN }}
-        gitemail: github-actions@users.noreply.github.com
-        gitname: github-actions
+        gitname: GitHub Actions
+        gitemail: 41898282+github-actions[bot]@users.noreply.github.com
