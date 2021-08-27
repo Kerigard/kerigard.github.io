@@ -1,6 +1,6 @@
 <template>
-  <Stars />
-  <main class="relative container mx-auto">
+  <Stars @loaded="show = true" />
+  <main v-if="show" class="relative container mx-auto">
     <Welcome />
     <About />
     <WorkExperience />
@@ -9,11 +9,15 @@
 </template>
 
 <script setup>
+import { ref } from 'vue'
+
 import Stars from '@/components/Stars.vue'
 import Welcome from './views/Welcome.vue'
 import About from './views/About.vue'
 import WorkExperience from './views/WorkExperience.vue'
 import Contacts from './views/Contacts.vue'
+
+const show = ref(false)
 </script>
 
 <style lang="postcss">
@@ -24,15 +28,7 @@ import Contacts from './views/Contacts.vue'
 @tailwind utilities;
 
 body {
-  @apply bg-black bg-fixed text-white;
-  background-image: radial-gradient(
-    circle at bottom left,
-    #06002b 10%,
-    #04002b 25%,
-    #00062d 30%,
-    #000427 50%,
-    #000 100%
-  );
+  @apply bg-black text-white overflow-y-scroll;
 }
 
 ::-webkit-scrollbar {

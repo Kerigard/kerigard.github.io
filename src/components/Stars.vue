@@ -1,11 +1,13 @@
 <template>
-  <div class="fixed top-0 right-0 bottom-0 left-0 pointer-events-none overflow-hidden">
-    <div class="transform rotate-45">
-      <div v-for="(star, index) in stars" :key="index" class="star" :style="star.containerStyle">
-        <div class="star__content" :style="star.style" />
+  <Transition name="slide-page-down" appear @after-enter="$emit('loaded')">
+    <div class="star-container">
+      <div class="transform rotate-45">
+        <div v-for="(star, index) in stars" :key="index" class="star" :style="star.containerStyle">
+          <div class="star__content" :style="star.style" />
+        </div>
       </div>
     </div>
-  </div>
+  </Transition>
 </template>
 
 <script setup>
@@ -50,6 +52,27 @@ for (let i = 0; i < 200; i++) {
 </script>
 
 <style lang="postcss" scoped>
+.slide-page-down-enter-active {
+  @apply transition duration-500;
+}
+.slide-page-down-enter-from {
+  @apply transform -translate-x-full translate-y-full opacity-0;
+}
+
+.star-container {
+  @apply w-full h-full top-0 right-0 bottom-0 left-0;
+  @apply bg-black bg-fixed;
+  @apply fixed pointer-events-none overflow-hidden;
+  background-image: radial-gradient(
+    circle at bottom left,
+    #06002b 10%,
+    #04002b 25%,
+    #00062d 30%,
+    #000427 50%,
+    #000 100%
+  );
+}
+
 .star {
   @apply absolute;
   transform: translateY(-10vh);

@@ -1,7 +1,5 @@
 <template>
-  <Card>
-    <h3 class="text-2xl lg:text-4xl mb-2 md:mb-8">Опыт работы {{ allTime }}</h3>
-
+  <Card :title="`Опыт работы ${allTime}`">
     <ul class="timeline">
       <li v-for="(item, index) in items" :key="index" class="flex flex-col sm:flex-row">
         <div class="w-48 min-w-48 whitespace-nowrap">
