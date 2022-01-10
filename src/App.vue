@@ -1,10 +1,10 @@
 <template>
   <Stars @loaded="show = true" />
   <main v-if="show" class="relative container mx-auto">
-    <Welcome />
-    <About />
-    <WorkExperience />
-    <Contacts />
+    <WelcomeView />
+    <AboutView />
+    <WorkExperienceView />
+    <ContactsView />
   </main>
 </template>
 
@@ -12,10 +12,10 @@
 import { ref } from 'vue'
 
 import Stars from '@/components/Stars.vue'
-import Welcome from './views/Welcome.vue'
-import About from './views/About.vue'
-import WorkExperience from './views/WorkExperience.vue'
-import Contacts from './views/Contacts.vue'
+import WelcomeView from './views/WelcomeView.vue'
+import AboutView from './views/AboutView.vue'
+import WorkExperienceView from './views/WorkExperienceView.vue'
+import ContactsView from './views/ContactsView.vue'
 
 const show = ref(false)
 </script>
