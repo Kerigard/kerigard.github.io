@@ -29,6 +29,7 @@ const items = ref([
     company: 'АО "Компания ТрансТелеКом"',
     position: 'Ведущий программист',
     startDate: new Date('2019-07'),
+    endDate: new Date('2022-02'),
     experience: [
       'Разработка и поддержка сайтов на PHP, Laravel, Vue.js.',
       'Использование баз данных MySQL, PostgreSQL, MS SQL.',
