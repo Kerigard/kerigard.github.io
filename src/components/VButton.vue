@@ -1,10 +1,4 @@
-<template>
-  <component :is="tag" :href="href" class="button" v-ripple>
-    <slot />
-  </component>
-</template>
-
-<script setup>
+<script lang="ts" setup>
 import { computed } from 'vue'
 
 const props = defineProps({
@@ -13,6 +7,12 @@ const props = defineProps({
 
 const tag = computed(() => (props.href ? 'a' : 'button'))
 </script>
+
+<template>
+  <component :is="tag" :href="href" class="button">
+    <slot />
+  </component>
+</template>
 
 <style lang="postcss" scoped>
 .button {

@@ -1,17 +1,7 @@
-<template>
-  <Stars @loaded="show = true" />
-  <main v-if="show" class="relative container mx-auto">
-    <WelcomeView />
-    <AboutView />
-    <WorkExperienceView />
-    <ContactsView />
-  </main>
-</template>
-
-<script setup>
+<script lang="ts" setup>
 import { ref } from 'vue'
 
-import Stars from '@/components/Stars.vue'
+import VStars from '@/components/VStars.vue'
 import WelcomeView from './views/WelcomeView.vue'
 import AboutView from './views/AboutView.vue'
 import WorkExperienceView from './views/WorkExperienceView.vue'
@@ -19,6 +9,16 @@ import ContactsView from './views/ContactsView.vue'
 
 const show = ref(false)
 </script>
+
+<template>
+  <VStars @loaded="show = true" />
+  <main v-if="show" class="relative container mx-auto">
+    <WelcomeView />
+    <AboutView />
+    <WorkExperienceView />
+    <ContactsView />
+  </main>
+</template>
 
 <style lang="postcss">
 @import url(https://fonts.googleapis.com/css?family=Montserrat:400);
@@ -53,7 +53,7 @@ body {
   box-shadow: inset 0 2px 1px -1px rgba(255, 255, 255, 0.1);
 }
 
-.ripple__container {
+/* .ripple__container {
   @apply absolute top-0 right-0 bottom-0 left-0 overflow-hidden pointer-events-none;
   border-radius: inherit;
 }
@@ -65,5 +65,5 @@ body {
 .ripple--active {
   @apply opacity-25;
   @apply transform -translate-x-1/2 -translate-y-1/2 scale-100;
-}
+} */
 </style>

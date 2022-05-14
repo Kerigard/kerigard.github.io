@@ -1,30 +1,10 @@
-<template>
-  <Card :title="`Опыт работы ${allTime}`">
-    <ul class="timeline">
-      <li v-for="(item, index) in items" :key="index" class="flex flex-col sm:flex-row">
-        <div class="w-48 min-w-48 whitespace-nowrap">
-          <span>{{ formateDate(item.startDate) }} — </span>
-          <span class="inline-block sm:block">{{ formateDate(item.endDate) }}</span>
-          <div class="text-gray-400">{{ diffAndFormateDates(item) }}</div>
-        </div>
-        <div class="mt-3 ml-0 sm:mt-0 sm:ml-4 md:ml-8">
-          <h4 class="text-xl">{{ item.company }}</h4>
-          <p class="mt-2 mb-1">
-            <b>{{ item.position }}</b>
-          </p>
-          <p v-for="(experience, key) in item.experience" :key="key">{{ experience }}</p>
-        </div>
-      </li>
-    </ul>
-  </Card>
-</template>
-
-<script setup>
+<script lang="ts" setup>
 import { computed, ref } from 'vue'
 
-import Card from '@/components/Card.vue'
+import VCard from '@/components/VCard.vue'
+import type { Work } from '@/types'
 
-const items = ref([
+const items = ref<Work[]>([
   {
     company: 'АО "Компания ТрансТелеКом"',
     position: 'Ведущий программист',
@@ -63,7 +43,7 @@ const items = ref([
   },
 ])
 const allTime = computed(() => {
-  let result = { years: 0, months: 0 }
+  const result = { years: 0, months: 0 }
 
   items.value.forEach((item) => {
     const { years, months } = diffDates(item)
@@ -82,14 +62,14 @@ const allTime = computed(() => {
   return formateTime(result)
 })
 
-function formateDate(date) {
+const formateDate = function (date: Date | null): string {
   if (!date) return 'По настоящее время'
 
-  let result = date.toLocaleDateString('ru-RU', { month: 'long', year: 'numeric' })
+  const result = date.toLocaleDateString('ru-RU', { month: 'long', year: 'numeric' })
 
   return result.charAt(0).toUpperCase() + result.slice(1, -3)
 }
-function formateTime({ years, months }) {
+function formateTime({ years, months }: { years: number; months: number }): string {
   const intl = new Intl.RelativeTimeFormat('ru-RU', { numeric: 'always' })
   let result = intl.format(-months, 'month').split(' ').slice(0, -1).join(' ')
 
@@ -99,17 +79,47 @@ function formateTime({ years, months }) {
 
   return result
 }
-function diffDates({ startDate, endDate }) {
+function diffDates({ startDate, endDate }: { startDate: Date; endDate: Date | null }): {
+  years: number
+  months: number
+} {
   const now = new Date()
   endDate = endDate ?? new Date(now.getFullYear(), now.getMonth(), 1)
-  const diff = new Date(endDate - startDate)
+  const diff = new Date(endDate.valueOf() - startDate.valueOf())
 
-  return { years: diff.toISOString().slice(0, 4) - 1970, months: diff.getMonth() + 1 }
+  return { years: +diff.toISOString().slice(0, 4) - 1970, months: diff.getMonth() + 1 }
 }
-function diffAndFormateDates({ startDate, endDate }) {
-  return formateTime(diffDates({ startDate, endDate }))
+function diffAndFormateDates(item: Work): string {
+  return formateTime(diffDates(item))
 }
 </script>
+
+<template>
+  <VCard :title="`Опыт работы ${allTime}`">
+    <ul class="timeline">
+      <li v-for="(item, index) in items" :key="index" class="flex flex-col sm:flex-row">
+        <div class="w-48 min-w-48 whitespace-nowrap">
+          <span>{{ formateDate(item.startDate) }} — </span>
+          <span class="inline-block sm:block">{{ formateDate(item.endDate) }}</span>
+          <div class="text-gray-400">
+            {{ diffAndFormateDates(item) }}
+          </div>
+        </div>
+        <div class="mt-3 ml-0 sm:mt-0 sm:ml-4 md:ml-8">
+          <h4 class="text-xl">
+            {{ item.company }}
+          </h4>
+          <p class="mt-2 mb-1">
+            <b>{{ item.position }}</b>
+          </p>
+          <p v-for="(experience, key) in item.experience" :key="key">
+            {{ experience }}
+          </p>
+        </div>
+      </li>
+    </ul>
+  </VCard>
+</template>
 
 <style lang="postcss" scoped>
 .timeline li + li {

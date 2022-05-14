@@ -1,26 +1,14 @@
-<template>
-  <div ref="root" class="card" :class="{ 'card--visible': visible }">
-    <h3 v-if="title" class="text-2xl lg:text-4xl mb-2 md:mb-8">{{ title }}</h3>
-    <div class="card__content">
-      <slot />
-    </div>
-  </div>
-</template>
-
-<script setup>
+<script lang="ts" setup>
 import { ref, onMounted, onUnmounted } from 'vue'
 
 defineProps({
-  title: {
-    type: String,
-    default: undefined,
-  },
+  title: String,
 })
 
 const root = ref()
 const visible = ref()
 
-let observer = new IntersectionObserver(([node]) => {
+const observer = new IntersectionObserver(([node]) => {
   if (!visible.value && node.isIntersecting) {
     visible.value = true
   }
@@ -33,6 +21,17 @@ onUnmounted(() => {
   observer.disconnect()
 })
 </script>
+
+<template>
+  <div ref="root" class="card" :class="{ 'card--visible': visible }">
+    <h3 v-if="title" class="text-2xl lg:text-4xl mb-2 md:mb-8">
+      {{ title }}
+    </h3>
+    <div class="card__content">
+      <slot />
+    </div>
+  </div>
+</template>
 
 <style lang="postcss" scoped>
 .card {
