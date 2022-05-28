@@ -3,8 +3,6 @@ import { ref } from 'vue'
 
 import type { Star } from '@/types'
 
-defineEmits(['loaded'])
-
 const stars = ref<Star[]>([])
 
 let style = document.head.querySelector<HTMLStyleElement>('style[star-styles]')
@@ -15,9 +13,7 @@ if (style == null) {
   document.head.appendChild(style)
 }
 
-function random(number: number): number {
-  return Math.floor(Math.random() * number) + 1
-}
+const random = (number: number): number => Math.floor(Math.random() * number) + 1
 
 for (let i = 0; i < 200; i++) {
   const size = Math.floor(Math.random() * 8) + 1
@@ -47,25 +43,16 @@ for (let i = 0; i < 200; i++) {
 </script>
 
 <template>
-  <Transition name="slide-page-down" appear @after-enter="$emit('loaded')">
-    <div class="star-container">
-      <div class="transform rotate-45">
-        <div v-for="(star, index) in stars" :key="index" class="star" :style="star.containerStyle">
-          <div class="star__content" :style="star.style" />
-        </div>
+  <div class="star-container">
+    <div class="transform rotate-45">
+      <div v-for="(star, index) in stars" :key="index" class="star" :style="star.containerStyle">
+        <div class="star__content" :style="star.style" />
       </div>
     </div>
-  </Transition>
+  </div>
 </template>
 
 <style lang="postcss" scoped>
-.slide-page-down-enter-active {
-  @apply transition duration-500;
-}
-.slide-page-down-enter-from {
-  @apply transform -translate-x-full translate-y-full opacity-0;
-}
-
 .star-container {
   @apply w-full h-full top-0 right-0 bottom-0 left-0;
   @apply bg-black bg-fixed;
