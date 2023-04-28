@@ -28,7 +28,9 @@ onUnmounted(() => {
 const show = () => (active.value = true)
 const hide = () => (active.value = false)
 
-const onEnter = (el: HTMLElement) => {
+const onEnter = (el: Element) => {
+  if (!(el instanceof HTMLElement)) return
+
   const rect = parent.value.getBoundingClientRect()
 
   el.style.top = `${Math.floor(window.scrollY + rect.top - root.value?.offsetHeight - 8)}px`
