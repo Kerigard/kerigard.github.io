@@ -9,13 +9,13 @@ import type { Work } from '@/types'
 const items = ref<Work[]>([
   {
     company: 'Студия интернет-решений Strikt',
-    position: 'Инженер-программист',
+    position: 'Ведущий программист',
     startDate: new Date('2022-02'),
     endDate: null,
     experience: [
-      'Разработка API для сайтов на PHP, Laravel.',
-      'Использование баз данных MySQL, ClickHouse.',
-      'Создание и настройка серверов на AWS.',
+      'Разработка API для сайтов на PHP, Laravel, TypeScript.',
+      'Использование баз данных MySQL, PostgreSQL, ClickHouse.',
+      'Создание и настройка серверов на AWS и Yandex Cloud.',
     ],
   },
   {
