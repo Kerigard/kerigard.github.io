@@ -14,7 +14,7 @@ import VTrees from '@/components/base/VTrees.vue'
         <h1 class="text-4xl md:text-5xl lg:text-7xl"><span class="text-red-600">Full Stack</span> разработчик</h1>
 
         <Transition name="slide-right" appear>
-          <h2 class="text-lg md:text-xl lg:text-2xl text-gray-400">JavaScript / PHP / Vue / Laravel</h2>
+          <h2 class="text-lg md:text-xl lg:text-2xl text-gray-400">Laravel / Vue.js</h2>
         </Transition>
       </div>
     </Transition>

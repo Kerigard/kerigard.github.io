@@ -7,13 +7,13 @@ import csharpIcon from '@iconify-icons/simple-icons/csharp'
 import xamlIcon from '@iconify-icons/simple-icons/xaml'
 import vuedotjsIcon from '@iconify-icons/simple-icons/vuedotjs'
 import laravelIcon from '@iconify-icons/simple-icons/laravel'
-import electronIcon from '@iconify-icons/simple-icons/electron'
 import dotnetIcon from '@iconify-icons/simple-icons/dotnet'
 import mysqlIcon from '@iconify-icons/simple-icons/mysql'
 import postgresqlIcon from '@iconify-icons/simple-icons/postgresql'
 import microsoftsqlserverIcon from '@iconify-icons/simple-icons/microsoftsqlserver'
 import redisIcon from '@iconify-icons/simple-icons/redis'
 import clickhouseIcon from '@iconify-icons/simple-icons/clickhouse'
+import elasticsearchIcon from '@iconify-icons/simple-icons/elasticsearch'
 import visualstudiocodeIcon from '@iconify-icons/simple-icons/visualstudiocode'
 import visualstudioIcon from '@iconify-icons/simple-icons/visualstudio'
 import gitIcon from '@iconify-icons/simple-icons/git'
@@ -28,17 +28,17 @@ import VTooltip from '@/components/base/VTooltip.vue'
 <template>
   <h4 class="mb-2">Языки программирования:</h4>
   <VIconGroup>
-    <VIcon :icon="javascriptIcon" color="#F7DF1E">
-      <VTooltip text="JavaScript" />
-    </VIcon>
-    <VIcon :icon="typescriptIcon" color="#3178C6">
-      <VTooltip text="TypeScript" />
-    </VIcon>
     <VIcon :icon="phpIcon" color="#777BB4">
       <VTooltip text="PHP" />
     </VIcon>
     <VIcon :icon="amazondynamodbIcon" color="#4479A1">
       <VTooltip text="SQL" />
+    </VIcon>
+    <VIcon :icon="javascriptIcon" color="#F7DF1E">
+      <VTooltip text="JavaScript" />
+    </VIcon>
+    <VIcon :icon="typescriptIcon" color="#3178C6">
+      <VTooltip text="TypeScript" />
     </VIcon>
     <VIcon :icon="csharpIcon" color="#239120">
       <VTooltip text="C#" />
@@ -50,14 +50,11 @@ import VTooltip from '@/components/base/VTooltip.vue'
 
   <h4 class="mt-4 mb-2">Фреймворки:</h4>
   <VIconGroup>
-    <VIcon :icon="vuedotjsIcon" color="#4FC08D">
-      <VTooltip text="Vue.js" />
-    </VIcon>
     <VIcon :icon="laravelIcon" color="#FF2D20">
       <VTooltip text="Laravel" />
     </VIcon>
-    <VIcon :icon="electronIcon" color="#47848F">
-      <VTooltip text="Electron" />
+    <VIcon :icon="vuedotjsIcon" color="#4FC08D">
+      <VTooltip text="Vue.js" />
     </VIcon>
     <VIcon :icon="dotnetIcon" color="#512BD4">
       <VTooltip text="WPF / WinUI" />
@@ -80,6 +77,9 @@ import VTooltip from '@/components/base/VTooltip.vue'
     </VIcon>
     <VIcon :icon="clickhouseIcon" color="#FFCC01">
       <VTooltip text="ClickHouse" />
+    </VIcon>
+    <VIcon :icon="elasticsearchIcon" color="#005571">
+      <VTooltip text="Elasticsearch" />
     </VIcon>
   </VIconGroup>
 
